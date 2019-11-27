@@ -7,6 +7,10 @@ module Authenticate
 
   def authenticate_with_token!
     return if current_user
-    jason_response "Unauthenticated", false, {}, :unauthorized
+    json_response "Unauthenticated", false, {}, :unauthorized
+  end
+
+  def correct_user(user)
+    user.id == current_user.id
   end
 end
